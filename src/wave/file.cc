@@ -363,6 +363,15 @@ Error File::Seek(uint64_t frame_index) {
   return kNoError;
 }
 
+Error File::Close() {
+  if (!impl_->ostream.is_open() && !impl_->istream.is_open()) {
+    return kNotOpen;
+  }
+  impl_->ostream.close();
+  impl_->istream.close();
+  return kNoError;
+}
+
 uint64_t File::Tell() const {
   if (!impl_->ostream.is_open() && !impl_->istream.is_open()) {
     return 0;

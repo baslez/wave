@@ -71,6 +71,8 @@ class File {
    * Move to the given frame in the file
    */
   Error Seek(uint64_t frame_index);
+
+  Error Close();
   
   /**
    * Give the current frame position in the file
